@@ -5,7 +5,7 @@
 
 ## L'idée
 Le code propose
-Une gand partie du travail a été d'extraire les données des 1.6 Go de texte bien formatés, puis d'en faire une projection se prêtant à l'analyse.
+Une grande partie du travail a été d'extraire les données des 1.6 Go de texte bien formatés, puis d'en faire une projection se prêtant à l'analyse.
 Nous avons choisi 4 étapes intermédiaires:
     - Une première pour trouver les mots à ne pas inclure, mais aussi parser les fichiers,  ce qui a permit de trouver :
     - les mots à inclure, qu'il a quand même fallu filtrer, on a donc une liste de 1000+ mots les plus fréquents
