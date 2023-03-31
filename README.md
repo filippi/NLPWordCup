@@ -27,7 +27,7 @@ Merci à vous :
 - Fork de https://github.com/ytdec/bar-chart-race pour les Bar Charts
 
 ## L'équipe
-- **Alberto Alonso-Pinar**, Valladolid, 
+- **Alberto Alonso-Pinar**, Valladolid, voit mieux de près, python noob
 - **Jean-Baptiste Filippi**, Corte, voit mieux de loin, python
 
 ## fichiers
