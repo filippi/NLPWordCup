@@ -4,7 +4,6 @@
 - Données Jellysmack Keywords/Channels/Videos 
 
 ## L'idée
-Le code propose
 Une grande partie du travail a été d'extraire les données des 1.6 Go de texte bien formatés, puis d'en faire une projection se prêtant à l'analyse.
 Nous avons choisi 4 étapes intermédiaires:
     - Une première pour trouver les mots à ne pas inclure, mais aussi parser les fichiers,  ce qui a permit de trouver :
@@ -12,6 +11,7 @@ Nous avons choisi 4 étapes intermédiaires:
     - pour chacun de ces mots, on calcule une fréquence sur chaque entrée (vidéo/chaine), on en fait un sous ensemble (avec la frequence et nb vue)
     - enfin on extrait de cette dataframe (1.5 millions d'enregistrements) des résumés par mois, et on synthétise dans un fichier 
 
+Nous appliquons la même idée pour les chaînes youtube et leurs description. 
 ## Utilisation
 Cloner le dépôt et ouvrir index.html avec Google Chrome. Aussi sur https://filippi.github.io/NLPWordCup/
 
@@ -27,7 +27,7 @@ Merci à vous :
 - Fork de https://github.com/ytdec/bar-chart-race pour les Bar Charts
 
 ## L'équipe
-- **Alberto Alonso-Pinar**, Valladolid, voit mieux de près, python noob
+- **Alberto Alonso Pinar**, Valladolid, voit mieux de près, python noob
 - **Jean-Baptiste Filippi**, Corte, voit mieux de loin, python
 
 ## fichiers
