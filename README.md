@@ -11,7 +11,7 @@ Nous avons choisi 4 étapes intermédiaires:
     - pour chacun de ces mots, on calcule une fréquence sur chaque entrée (vidéo/chaine), on en fait un sous ensemble (avec la frequence et nb vue)
     - enfin on extrait de cette dataframe (1.5 millions d'enregistrements) des résumés par mois, et on synthétise dans un fichier 
 
-Nous appliquons la même idée pour les chaînes youtube et leurs description. 
+Nous appliquons la même idée pour les chaînes youtube et leur description. 
 ## Utilisation
 Cloner le dépôt et ouvrir index.html avec Google Chrome. Aussi sur https://filippi.github.io/NLPWordCup/
 
