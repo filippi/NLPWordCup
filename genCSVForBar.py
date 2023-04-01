@@ -15,10 +15,21 @@ import numpy as np
 import pandas as pd
 from os import path
 
-allVids.read_pickle("lastRunAllVids.pk")
+dkw = pd.read_pickle("lastRunAllVids.pk")
 #name,value,year,lastValue,rank
 
-# dans cette dataframe, une colonne par mot clé +
+import matplotlib.pyplot as plt
+
+# dans cette dataframe, une colonne par mot clé (+1000) + une colonne par nb vue mot clé + une colonne par nb comment mot clé + une colonne ppour la date
+dkw = pd.read_pickle("lastRunAllVids.pk")
+dkw['Date'] =  pd.to_datetime(dkw['DateDay'])
+dkw.set_index('Date', inplace=True)
+dkw['NVIDEOS'].plot()
+(dkw['coronavirusNV']/dkw['NVIDEOS']).plot()
+
+
+
+
 
 kwStart = 10
 kwLimit = 50
