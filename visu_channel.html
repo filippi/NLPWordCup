@@ -54,7 +54,8 @@
 </head>
 
 <body>
-	<h1 style="font-family:sans-serif;">Lien vers la description des chaînes youtube <a href="/visu_channel.html">ici!</a> </h1>
+	<h1 style="font-family:sans-serif;">Lien vers la description des vidéos youtube <a href="/index.html">ici!</a> </h1>
+
    <script>
       // Feel free to change or delete any of the code you see in this editor!
       var svg = d3.select("body").append("svg")
@@ -63,7 +64,7 @@
 
 
 
-var tickDuration = 5000;
+var tickDuration = 3400;
 
 var top_n = 20;
 var height = 1200;
@@ -81,7 +82,7 @@ let barPadding = (height-(margin.bottom+margin.top))/(top_n*5);
 let title = svg.append('text')
    .attr('class', 'title')
    .attr('y', 24)
-   .html('NLP Word Race - Challenge Dataviz 2023, les mots des vidéos - Alonso-Pinar/Filippi');
+   .html('NLP Word Race - Challenge Dataviz 2023, les mots des chaînes - Alonso-Pinar/Filippi');
 
 let subTitle = svg.append("text")
    .attr("class", "subTitle")
@@ -93,11 +94,11 @@ let caption = svg.append('text')
    .attr('x', width)
    .attr('y', height-5)
    .style('text-anchor', 'end')
-   .html('Source: Jellysmack Dataviz 2023 Video Dataset');
+   .html('Source: Jellysmack Dataviz 2023 Channel Dataset');
 
-let year = 2020;
+let year = 2005;
 
-d3.csv('test.csv').then(function(data) {
+d3.csv('test_channel.csv').then(function(data) {
    //if (error) throw error;
 
    console.log(data);
