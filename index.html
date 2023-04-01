@@ -58,14 +58,14 @@
       // Feel free to change or delete any of the code you see in this editor!
       var svg = d3.select("body").append("svg")
    .attr("width", 960)
-   .attr("height", 1500);
+   .attr("height", 1200);
 
 
 
-var tickDuration = 1000;
+var tickDuration = 5000;
 
-var top_n = 40;
-var height = 1500;
+var top_n = 20;
+var height = 1200;
 var width = 960;
 
 const margin = {
@@ -94,9 +94,9 @@ let caption = svg.append('text')
    .style('text-anchor', 'end')
    .html('Source: Jellysmack Dataviz 2023 Video Dataset');
 
-let year = 2000;
+let year = 2021;
 
-d3.csv('word_counts.csv').then(function(data) {
+d3.csv('test.csv').then(function(data) {
    //if (error) throw error;
 
    console.log(data);
@@ -300,17 +300,17 @@ d3.csv('word_counts.csv').then(function(data) {
          .attr('y', d => y(top_n+1)+5)
          .remove();
       
-      saison =   "    Hiver  "
+      saison =   "1Q  "
       if(year-(~~year) > .25)
-        saison = "Printemps  "
+        saison = "2Q  "
       if(year-(~~year) > .5)
-        saison = "     Eté  "
+        saison = "3Q  "
       if(year-(~~year) > .75)
-        saison = " Automne  "
+        saison = "4Q  "
           
       yearText.html(saison + ~~year);
 
-      if(year == 2018) ticker.stop();
+      if(year == 2024) ticker.stop();
       year = d3.format('.1f')((+year) + 0.1);
    },tickDuration);
 
