@@ -22,14 +22,41 @@ import matplotlib.pyplot as plt
 
 # dans cette dataframe, une colonne par mot clé (+1000) + une colonne par nb vue mot clé + une colonne par nb comment mot clé + une colonne ppour la date
 dkw = pd.read_pickle("lastRunAllVids.pk")
+
 dkw['Date'] =  pd.to_datetime(dkw['DateDay'])
 dkw.set_index('Date', inplace=True)
-dkw['NVIDEOS'].plot()
-(dkw['coronavirusNV']/dkw['NVIDEOS']).plot()
+
+categories={}
+categories["Film"] = ["comedie","filme","film","cinema","acteurs","tournage"]
+categories["Automobile"] = ["voiture","auto","dakar","electrique"]
+categories["Musique"] = ["musique","skyrock","guitare","guitare"]
+categories["Animaux"] = ["chat","chiennete","animaux"]
+categories["Sports"] = ["mercato","goal","champions","pronostics","musculation","mbappe","sport","sportive","football","barca","psg", "chelsea","madrid"]
+categories["Voyage et événements"] = ["barcelone","usa","evenement","aventures","aventure","vacances","qatar"]
+categories["Gaming"] = ["jeu","fifa","fortnite" ,"league","streaming", "playstation","games","gameplay","gta","roblox"]
+categories["Divertissement"] = ["cuisine","livre", "camera", "culture", "theatre", "podcast", "comedie", "cinema", "lectures", "magazine"]
+categories["Politique"] = ["guerre","actualite", "international","analyse", "interview", "immigration", "nationale", "analyses" ]
+categories["Beauté"] = ["horoscope","nutrition", "beauty", "astuce", "newsletter", "boutique", "meditation", "gossip'afrique", "coaching" ]
+categories["Education "] = ["education", "tech", "techniques","technique","digital", "energies", "logiciel", "formation", "electrique"]
+categories["Associatif"] = ["jesus","famille", "dimanche", "social", "projet", "membres", "enfants", "priere","chretienne" ]
+categories["Actualites"] = ["ukraine", "covid-19", "macron", "journalistes", "coronavirus", "financier", "president", "russie", "btc","politique" ,"russe"]
+
+
+dcat = pd.DataFrame(index=dkw.index, columns=list(categories.keys()))
+dcat = dcat.fillna(0)
+
+for cat in categories:
+    for catKW in categories[cat]:
+        dcat[cat] = dcat[cat] + ((dkw[catKW]*(1+dkw[catKW+"NV"]))/dkw['NVIDEOS'])
+
+dcat.plot()
+    
+    
 
 
 
-
+#"coronavirus" "covid-19" 
+#chelsea
 
 kwStart = 10
 kwLimit = 50
@@ -40,7 +67,7 @@ with open('test.csv',  'w', newline='') as csvfile:
     mycsvwriter = csv.writer(csvfile, delimiter=',')
     mycsvwriter.writerow(["name","value","year","lastValue","rank"])
     
-    for index, row in allVids.iterrows():
+    for index, row in *.iterrows():
         
         rankedRow = row.sort_values(ascending=False)
         
