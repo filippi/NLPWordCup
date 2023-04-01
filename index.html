@@ -59,14 +59,14 @@
       // Feel free to change or delete any of the code you see in this editor!
       var svg = d3.select("body").append("svg")
    .attr("width", 960)
-   .attr("height", 1200);
+   .attr("height", 600);
 
 
 
-var tickDuration = 5000;
+var tickDuration = 1000;
 
 var top_n = 20;
-var height = 1200;
+var height = 600;
 var width = 960;
 
 const margin = {
@@ -311,7 +311,7 @@ d3.csv('test.csv').then(function(data) {
           
       yearText.html(saison + ~~year);
 
-      if(year == 2024) ticker.stop();
+      if(year == 2023) ticker.stop();
       year = d3.format('.1f')((+year) + 0.1);
    },tickDuration);
 

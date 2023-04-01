@@ -14,6 +14,7 @@ Processing final du fichier pour en sortir des synthèses graphiques et en CVS p
 import numpy as np
 import pandas as pd
 from os import path
+import csv
 
 dkw = pd.read_pickle("lastRunAllVids.pk")
 #name,value,year,lastValue,rank
@@ -33,7 +34,7 @@ categories["Musique"] = ["musique","skyrock","guitare","guitare"]
 categories["Animaux"] = ["chat","chiennete","animaux"]
 categories["Sports"] = ["mercato","goal","champions","pronostics","musculation","mbappe","sport","sportive","football","barca","psg", "chelsea","madrid"]
 categories["Voyage et événements"] = ["barcelone","usa","evenement","aventures","aventure","vacances","qatar"]
-categories["Gaming"] = ["jeu","fifa","fortnite" ,"league","streaming", "playstation","games","gameplay","gta","roblox"]
+categories["Gaming"] = ["jeu","fifa","league","streaming", "playstation","games","gameplay","gta","roblox"] # "fortnite"
 categories["Divertissement"] = ["cuisine","livre", "camera", "culture", "theatre", "podcast", "comedie", "cinema", "lectures", "magazine"]
 categories["Politique"] = ["guerre","actualite", "international","analyse", "interview", "immigration", "nationale", "analyses" ]
 categories["Beauté"] = ["horoscope","nutrition", "beauty", "astuce", "newsletter", "boutique", "meditation", "gossip'afrique", "coaching" ]
@@ -47,37 +48,40 @@ dcat = dcat.fillna(0)
 
 for cat in categories:
     for catKW in categories[cat]:
-        dcat[cat] = dcat[cat] + ((dkw[catKW]*(1+dkw[catKW+"NV"]))/dkw['NVIDEOS'])
+        dcat[cat] = dcat[cat] + (dkw[catKW]*(1))/dkw['NVIDEOS']
 
-dcat.plot()
+
+
+dcat['Date'] = dcat.index
+g = dcat.groupby(pd.Grouper(key='Date', freq='36D'))
+dfs = [group for _,group in g]
     
-    
 
 
+allVids = pd.DataFrame(columns=list(categories.keys()),index=(range(len(dfs))))
+allVids = allVids.fillna(0)
 
-#"coronavirus" "covid-19" 
-#chelsea
+for i, dsub in enumerate(dfs):
+    for cat in categories:
 
-kwStart = 10
-kwLimit = 50
+        allVids[cat][i] = dsub[cat].mean()
+                
+        print(i,cat,dsub[cat].mean(),allVids.loc[i][cat])
 
- 
  
 with open('test.csv',  'w', newline='') as csvfile:
     mycsvwriter = csv.writer(csvfile, delimiter=',')
     mycsvwriter.writerow(["name","value","year","lastValue","rank"])
     
-    for index, row in *.iterrows():
+    for index, row in allVids.iterrows():
         
         rankedRow = row.sort_values(ascending=False)
         
-        for ni, keyRow in enumerate(rankedRow[kwStart:kwStart+kwLimit].keys()):
+        for ni, keyRow in enumerate(rankedRow.keys()):
             lastValue=rankedRow[keyRow]
             if(index>0):
                 lastValue=allVids.loc[index-1][keyRow]
             mycsvwriter.writerow([keyRow,rankedRow[keyRow],float(2020+(0.1*index)),lastValue,ni+1])
     
  
-
-
- 
+allVids.plot()
