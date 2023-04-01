@@ -43,7 +43,7 @@ def simple_tokenizer(text,yesW):
 
  
 
-good_file = open("verygoodWords.txt", "r")
+good_file = open("goodWords.txt", "r")
 good_french = good_file.read().split("\n")
 
 goodWords = set()
@@ -53,51 +53,36 @@ for w in good_french :
 
 df = pd.read_pickle("filtered.pkl")
 
-g = df.groupby(pd.Grouper(key='Dates', freq='36D'))
+g = df.groupby(pd.Grouper(key='Dates', freq='1D'))
 dfs = [group for _,group in g]
 
-print("Grouped in %d tenth of year"%len(dfs))
+print("Grouped in %d elements"%len(dfs))
+
 
 
 allCollumnNames= list(goodWords)
-allVids = pd.DataFrame(columns=allCollumnNames,index=(range(len(dfs))))
+allCollumnNamesAndNV = [itm+"NV" for itm in allCollumnNames]
+allCollumnNamesAndNC  = [itm+"NC" for itm in allCollumnNames]
+
+allVids = pd.DataFrame(columns=allCollumnNames+allCollumnNamesAndNV+allCollumnNamesAndNC+["NVIDEOS","DateDay"],index=(range(len(dfs))))
 allVids = allVids.fillna(0)
 
 
 for i, dfM in enumerate(dfs):
-    print(i)
-    for index, row in dfM[:5000].iterrows():
-        text = row['video_description']
-        token = simple_tokenizer( unidecode.unidecode(str(text).lower()),goodWords)
+    allVids.loc[i]["NVIDEOS"] = len(dfM)
+    allVids.loc[i]["DateDay"] = dfM["Dates"].iloc[0].value
+    print("computed %d on %d - %d elements"%(i,len(dfs),len(dfM)),dfM["Dates"].iloc[0].strftime('%Y-%m-%d'),allVids.loc[i]["DateDay"])
+    for index, row in dfM.iterrows():
+        text = str(row['video_description'])+ str(row['video_name'])
+        nv = float(row['video_views']) 
+        nc = float(row['video_comments'])
+        token = simple_tokenizer( unidecode.unidecode(text.lower()),goodWords)
         for lk,lv in FreqDist(token).most_common(1000):
             allVids.loc[i][lk] += lv 
-
- 
-#name,value,year,lastValue,rank
-#Apple,214480,2018,211447.400000003,1
-#Apple,211447.400000003,2017.9,208414.799999999,1
-kwStart = 10
-kwLimit = 50
-
-#statsVids = pd.DataFrame(columns=["name","value","year","lastValue","rank"],index=(range(1+len(dfs)*kwLimit)))
-#statsVids = statsVids.fillna(0)
- 
- 
-with open('test.csv',  'w', newline='') as csvfile:
-    mycsvwriter = csv.writer(csvfile, delimiter=',')
-    mycsvwriter.writerow(["name","value","year","lastValue","rank"])
+            allVids.loc[i][lk+"NV"] += nv
+            allVids.loc[i][lk+"NC"] += nc
     
-    for index, row in allVids.iterrows():
-        
-        rankedRow = row.sort_values(ascending=False)
-        
-        for ni, keyRow in enumerate(rankedRow[kwStart:kwStart+kwLimit].keys()):
-            lastValue=rankedRow[keyRow]
-            if(index>0):
-                lastValue=allVids.loc[index-1][keyRow]
-            mycsvwriter.writerow([keyRow,rankedRow[keyRow],float(2020+(0.1*index)),lastValue,ni+1])
     
- 
-
+allVids.to_pickle("lastRunAllVids.pk")
 
  
