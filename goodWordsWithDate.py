@@ -41,10 +41,9 @@ def simple_tokenizer(text,yesW):
     words = [word for word in words if word in yesW ]
     return words
 
+ 
 
-fileIn = "../jsk_datataviz_channel/jsk_dataviz_video.csv"
-
-good_file = open("goodWords.txt", "r")
+good_file = open("verygoodWords.txt", "r")
 good_french = good_file.read().split("\n")
 
 goodWords = set()
@@ -77,7 +76,7 @@ for i, dfM in enumerate(dfs):
 #name,value,year,lastValue,rank
 #Apple,214480,2018,211447.400000003,1
 #Apple,211447.400000003,2017.9,208414.799999999,1
-kwStart = 0
+kwStart = 10
 kwLimit = 50
 
 #statsVids = pd.DataFrame(columns=["name","value","year","lastValue","rank"],index=(range(1+len(dfs)*kwLimit)))
@@ -96,7 +95,7 @@ with open('test.csv',  'w', newline='') as csvfile:
             lastValue=rankedRow[keyRow]
             if(index>0):
                 lastValue=allVids.loc[index-1][keyRow]
-            mycsvwriter.writerow([keyRow,rankedRow[keyRow],float(2021+(0.1*index)),lastValue,ni+1])
+            mycsvwriter.writerow([keyRow,rankedRow[keyRow],float(2020+(0.1*index)),lastValue,ni+1])
     
  
 
