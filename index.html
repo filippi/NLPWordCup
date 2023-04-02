@@ -57,8 +57,16 @@
    </style>
 </head>
 
-<body>
-	<h1 style="font-family:sans-serif;">Lien vers la description des chaînes youtube <a href="visu_channel.html">ici!</a> </h1>
+<body style="background-color:white;">
+	<h3 style="font-family:sans-serif;">
+        Proportion des mots et thèmes dans les commentaires de vidéos de 2020 à 2023 
+    <br>Analyse interactive basée sur les commentaires de 1.600.000 vidéos 
+    <br>Vous pouvez cliquer sur les lignes en bas (pour changer la date)
+    <br>Vous pouvez aussi cliquer sur les barres pour le detail de chaque catégorie
+    <br><a href="?dataset=categories">Revenir aux catégories ici!</a>
+    </h3>
+    
+    <h4 style="font-family:sans-serif;">Voir sur dataset chaine <a href="visu_channel.html">ici!</a> </h4>
     <div class="small-height" id="barrace"></div>
     <div class="small-height" id="chartword"></div>
     
@@ -111,27 +119,33 @@ var rectangleYear = null;
 dateOps = { year: 'numeric', month: 'long' };
 const urlParams = new URLSearchParams(window.location.search);
 const paramFile = urlParams.get('dataset')
-console.log("found "+paramFile)
-       
-let colors = ["paleturquoise","palevioletred","papayawhip","peachpuff","peru","pink","plum","powderblue","red","rosybrown","royalblue","saddlebrown","salmon","sandybrown","seagreen","seashell","sienna","silver","skyblue","slateblue","slategray","slategrey","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
+ 
+var allColors = new Object()
+let colors = ["paleturquoise","palevioletred","papayawhip","peru","pink","plum","powderblue","red","rosybrown","royalblue","saddlebrown","salmon","sandybrown","seagreen","seashell","sienna","silver","skyblue","slateblue","slategray","slategrey","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
        
 if(paramFile != null){
     dsetfile = paramFile
     urlhelper = "source="
-}
-console.log("opening "+dsetfile)
+} 
        
 d3.csv(dsetfile+".csv").then(function(data) {
    //if (error) throw error;
 
 
 let cindexv = 1;
+   console.log(Object.keys(data[0]))
+    data.forEach(d => {
+        if(!(d.name in allColors)){
+            allColors[d.name] = colors[cindexv++]
+            console.log(d.name, allColors[d.name])
+        }
+   });
    data.forEach(d => {
       d.value = +d.value,
          d.lastValue = +d.lastValue,
          d.value = isNaN(d.value) ? 0 : d.value,
          d.year = +d.year,
-         d.colour = colors[cindexv++]//d3.hsl(Math.random()*360,0.75,0.75)
+         d.colour = allColors[d.name]//d3.hsl(Math.random()*360,0.75,0.75
    });
 
 
@@ -375,10 +389,11 @@ var svg2 = d3.select("#chartword")
 		.attr("height", height);
     
     rectangleYear = svg2.append("rect")
-      .attr("x", 150)
+      .attr("x", 5)
       .attr("y", 0)
-      .attr("width", 5)
-      .attr("height", height);
+      .attr("width", 15)
+      .attr("height", height)
+       .attr('fill', 'darkblue');
         
     
       
@@ -395,7 +410,13 @@ var svg2 = d3.select("#chartword")
     <!-- Retrieve data from CSV -->
     d3.csv(dsetfile+"_p.csv", parseRow).then(    
       function (data){       
-    
+     
+        let vmax = 0;
+            data.forEach(d => {
+                if(vmax < d.frequency){
+                    vmax = d.frequency;
+                }
+           });
 
         <!-- Setup Scales -->              
         let xScale = d3.scaleLinear()
@@ -403,7 +424,7 @@ var svg2 = d3.select("#chartword")
 				   .range([0, 80]);
 				   
 	    let yScale = d3.scaleLinear()
-                   .domain([0, 5000])
+                   .domain([0, vmax])
                    .range([height, 0]);
 
     
