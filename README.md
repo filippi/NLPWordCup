@@ -27,11 +27,23 @@ Aussi disponible sur https://filippi.github.io/NLPWordCup/
 Les données fournies sont reparties dans trois fichiers différents:
 * un fichier contenant les catégories genérales des vidéos YouTube (ie : "sports", "gaming", "tutoriels" etc). La liste contenait environ 90 catégories différentes.
 * un fichier contenant des chaînes youtube : leur nom, la date de création, le nombre d'abonnés et la description de la chaîne. Ce fichier contient environ 60000 chaînes différentes pour la période 2005-2023.
-* un fichier contenant la liste des vidéos téléchargés sur la plateforme : la date de création, le nombre de visualisations, le nombre de commentaires. Ce fichier contient environ 600000 entrées pour la période 2020-2023.
+* un fichier contenant la liste des vidéos téléchargés sur la plateforme : la date de création, le nombre de visualisations, le nombre de commentaires. Ce fichier contient environ 1 500 000 entrées pour la période 2020-2023.
 	
 ### Pre processing
 
+#### Les chaînes youtube: ####
+Les données relatives aux chaînes youtube contiennent environ 60000 chaînes youtube différentes et pour chaque chaîne on dispose des informations :
+* nom, 
+* date de création, 
+* nombre d'abonnés 
+* description de la chaîne
 
+Une première étape consiste à retirer les données où il n'y a pas de description ou a description n'est pas, partiellement, en français.
+Ensuite, nous pouvons extraire tous les mots utilisés dans les descriptions. Dans cet ensemble de mots que l'on classe d'abord par occurrence descendante nous allons garder les mots qui n'apportent pas d'informations utiles (ie les _stopwords_). Des exemples :
+* "après", "bonjour", "abonnés", "proposer", "allez"...
+La liste contient environ les 2000 mots les plus fréquents qui n'apportent pas d'informations utiles.
+
+Nous ne gardons donc que les mots qui n'apparaissent pas dans cette liste de _stopwords_. Il suffit ensuite de grouper les données par paquets de 36 jours (environ 10% d'une année) et les données sont prêtes à être utilisées.
 
 #### Les catégories: ####
 
@@ -55,6 +67,19 @@ A l'aide d'une intelligence avancée nous avons ensuite determiné les mots des 
 Ceci nous a fourni 10 mots par catégorie. Avec cette liste on peut donc automatiquement determiner la categorie d'une vidéo en fonction des mots utilisés dans la description.
 Par exemple, les mots qui décrivent correctement la categorie Gaming sont :
 * "discord","twitch","jeu","fifa", "fortnite","league","streaming", "playstation","games","gameplay"
+
+
+### Analyse des données
+
+#### Thèmes des chaînes ####
+
+Pendant les années 2005-2007, les thèmes dont les chaînes parlent le plus sont les thèmes liés à l'actualité. On voit en effet certains mots clés comme :
+* monde, interview, actualité, international, information
+Rapidement, le gaming fait sont introduction vers 2006 dans Youtube (mots : jeux, jeu, twitch, minecraft...).
+Vers 2009 on voit une apparition des thèmes liés à la beauté et aux tutoriels. 
+Au début des années 2010, les catégories gaming et actualités semblent dominer le panorama youtube.
+
+
 
 ## Technos
 - D3.js -> pour la visualisation en course de Barchart
