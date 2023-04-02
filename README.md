@@ -4,6 +4,7 @@
 - Données Jellysmack Keywords/Channels/Videos 
 
 
+
 ## L'idée
 Une grande partie du travail a été d'extraire les données des 1.6 Go de texte bien formatés, puis d'en faire une projection se prêtant à l'analyse.
 Nous avons choisi 4 étapes intermédiaires:
@@ -13,6 +14,11 @@ Nous avons choisi 4 étapes intermédiaires:
 * enfin on extrait de cette dataframe (1.5 millions d'enregistrements) des résumés par mois, et on synthétise dans un fichier 
 
 Nous appliquons la même idée pour les chaînes youtube et leur description.
+
+## Utilisation
+Cloner le dépôt et ouvrir index.html avec Google Chrome.
+Aussi disponible sur https://filippi.github.io/NLPWordCup/
+
 
 ## Description detaillée
 
@@ -49,11 +55,6 @@ A l'aide d'une intelligence avancée nous avons ensuite determiné les mots des 
 Ceci nous a fourni 10 mots par catégorie. Avec cette liste on peut donc automatiquement determiner la categorie d'une vidéo en fonction des mots utilisés dans la description.
 Par exemple, les mots qui décrivent correctement la categorie Gaming sont :
 * "discord","twitch","jeu","fifa", "fortnite","league","streaming", "playstation","games","gameplay"
-
-
-
-## Utilisation
-Cloner le dépôt et ouvrir index.html avec Google Chrome. Aussi sur https://filippi.github.io/NLPWordCup/
 
 ## Technos
 - D3.js -> pour la visualisation en course de Barchart
