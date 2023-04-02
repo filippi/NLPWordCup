@@ -3,7 +3,11 @@
 <head>
    <meta charset="utf-8">
    <script src="https://d3js.org/d3.v5.min.js"></script>
+   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
    <style>
+       .small-height {
+  height: 20%;
+}
    text{
       font-size: 16px;
       font-family: Open Sans, sans-serif;
@@ -55,18 +59,22 @@
 
 <body>
 	<h1 style="font-family:sans-serif;">Lien vers la description des chaînes youtube <a href="visu_channel.html">ici!</a> </h1>
+    <div class="small-height" id="barrace"></div>
+    <div class="small-height" id="chartword"></div>
+    
+    
    <script>
-      // Feel free to change or delete any of the code you see in this editor!
-      var svg = d3.select("body").append("svg")
+      
+var svg = d3.select("#barrace").append("svg")
    .attr("width", 960)
-   .attr("height", 600);
+   .attr("height", 400);
 
 
 
 var tickDuration = 1000;
 
-var top_n = 20;
-var height = 600;
+var top_n = 12;
+var height = 400;
 var width = 960;
 
 const margin = {
@@ -86,7 +94,7 @@ let title = svg.append('text')
 let subTitle = svg.append("text")
    .attr("class", "subTitle")
    .attr("y", 55)
-   .html("Nombre d'occurences");
+   .html("Proportion de vidéos (/100)");
 
 let caption = svg.append('text')
    .attr('class', 'caption')
@@ -95,22 +103,37 @@ let caption = svg.append('text')
    .style('text-anchor', 'end')
    .html('Source: Jellysmack Dataviz 2023 Video Dataset');
 
-let year = 2020;
-
-d3.csv('test.csv').then(function(data) {
+let year = 1;
+       
+dsetfile = "categories";
+urlhelper = "dataset=";
+var rectangleYear = null;
+dateOps = { year: 'numeric', month: 'long' };
+const urlParams = new URLSearchParams(window.location.search);
+const paramFile = urlParams.get('dataset')
+console.log("found "+paramFile)
+       
+let colors = ["paleturquoise","palevioletred","papayawhip","peachpuff","peru","pink","plum","powderblue","red","rosybrown","royalblue","saddlebrown","salmon","sandybrown","seagreen","seashell","sienna","silver","skyblue","slateblue","slategray","slategrey","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
+       
+if(paramFile != null){
+    dsetfile = paramFile
+    urlhelper = "source="
+}
+console.log("opening "+dsetfile)
+       
+d3.csv(dsetfile+".csv").then(function(data) {
    //if (error) throw error;
 
-   console.log(data);
 
+let cindexv = 1;
    data.forEach(d => {
       d.value = +d.value,
          d.lastValue = +d.lastValue,
          d.value = isNaN(d.value) ? 0 : d.value,
          d.year = +d.year,
-         d.colour = d3.hsl(Math.random()*360,0.75,0.75)
+         d.colour = colors[cindexv++]//d3.hsl(Math.random()*360,0.75,0.75)
    });
 
-   console.log(data);
 
    let yearSlice = data.filter(d => d.year == year && !isNaN(d.value))
       .sort((a,b) => b.value - a.value)
@@ -118,7 +141,6 @@ d3.csv('test.csv').then(function(data) {
 
    yearSlice.forEach((d,i) => d.rank = i);
 
-   console.log('yearSlice: ', yearSlice)
 
    let x = d3.scaleLinear()
       .domain([0, d3.max(yearSlice, d => d.value)])
@@ -160,7 +182,7 @@ d3.csv('test.csv').then(function(data) {
       .attr('x', d => x(d.value)-8)
       .attr('y', d => y(d.rank)+5+((y(1)-y(0))/2)+1)
       .style('text-anchor', 'end')
-      .html(d => d.name);
+      .html(d => "click > <a href=?"+urlhelper+d.name+">"+d.name+"</a>") ; 
 
    svg.selectAll('text.valueLabel')
       .data(yearSlice, d => d.name)
@@ -239,7 +261,7 @@ d3.csv('test.csv').then(function(data) {
          .attr('x', d => x(d.value)-8)
          .attr('y', d => y(top_n+1)+5+((y(1)-y(0))/2))
          .style('text-anchor', 'end')
-         .html(d => d.name)    
+         .html(d => "click <a href=?"+urlhelper+d.name+">"+d.name+"</a>")   
          .transition()
          .duration(tickDuration)
          .ease(d3.easeLinear)
@@ -301,18 +323,16 @@ d3.csv('test.csv').then(function(data) {
          .attr('y', d => y(top_n+1)+5)
          .remove();
       
-      saison =   "1Q  "
-      if(year-(~~year) > .25)
-        saison = "2Q  "
-      if(year-(~~year) > .5)
-        saison = "3Q  "
-      if(year-(~~year) > .75)
-        saison = "4Q  "
-          
-      yearText.html(saison + ~~year);
+ 
+      infoDate = new Date(2020, 0, (1 + ((2*year)) * 7));
+    
+      yearText.html(infoDate.toLocaleDateString("fr-FR", dateOps));
 
-      if(year == 2023) ticker.stop();
-      year = d3.format('.1f')((+year) + 0.1);
+      if(year == 81) year = 80;
+      if(rectangleYear != null){
+          rectangleYear.attr("x", ~~((year/81)*(width*0.82)));
+       }
+      year = d3.format('.1f')((+year) + 1);
    },tickDuration);
 
 });
@@ -326,6 +346,140 @@ const halo = function(text, strokeWidth) {
       .style('opacity', 1);
 
 }   
+
+
+
+
+
+
+
+
+// append the svg object to the body of the page
+var svg2 = d3.select("#chartword")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")")
+    .on("click", function() {
+      
+        var coordinates= d3.mouse(this);
+        year = ~~(coordinates[0]*100/width);
+       
+      d3.event.stopPropagation();
+    });
+		  
+	svg2.append("g")
+		.attr("width", width)
+		.attr("height", height);
+    
+    rectangleYear = svg2.append("rect")
+      .attr("x", 150)
+      .attr("y", 0)
+      .attr("width", 5)
+      .attr("height", height);
+        
+    
+      
+                      
+    <!-- Row Converter Function -->
+    function parseRow(d){      
+      let newRow = {} 
+      newRow.name = d.name;
+	  newRow.frequency = +d.frequency;
+	  newRow.year = d.year;
+      return newRow;
+    }
+    
+    <!-- Retrieve data from CSV -->
+    d3.csv(dsetfile+"_p.csv", parseRow).then(    
+      function (data){       
+    
+
+        <!-- Setup Scales -->              
+        let xScale = d3.scaleLinear()
+	               .domain(d3.extent(data, function(d) { return d.year; }))
+				   .range([0, 80]);
+				   
+	    let yScale = d3.scaleLinear()
+                   .domain([0, 5000])
+                   .range([height, 0]);
+
+    
+	    <!-- Setup Axis -->
+        let xAxis = svg2.append("g")
+                  .attr("transform","translate(0,"+height+")")
+                  .call(d3.axisBottom(xScale).tickFormat(d3.format('.0f')));
+				  
+        let yAxis = svg2.append("g")
+                  .call(d3.axisLeft(yScale));
+                                     
+        <!-- Line Generator -->      
+        let lineGenerator = d3.line()
+          .x(function(d) { 
+            return xScale(d.year);})
+          .y(function(d) { 
+            return yScale(d.frequency);})
+	      .curve(d3.curveMonotoneX)
+	
+        let nestedData = d3.nest()
+          .key(function(d) {return d.name;})
+          .entries(data);
+           
+		
+		let lines = svg2.append("g");
+		
+        lines.selectAll(".line")
+            .data(nestedData)
+            .enter()
+			.append("g")
+            .append("path")
+            .attr("class", "line")
+            .attr("d", function(d,i) {
+              return lineGenerator(d.values);
+            })
+            .style("fill","none")
+            .style("stroke", function(d,i) {
+              return colors[i];
+            })
+            .style("opacity", .9)
+            .style("stroke-width",4)
+            .on("mouseover", function(d, i) {
+              d3.select(this).style("stroke-width", 6)
+            })
+            .on("mouseout", function(d, i) {
+              d3.select(this).style("stroke-width", 4)
+            });
+			
+	    lines.selectAll(".labels")
+		    .data(nestedData)
+			.enter()
+			.append("g")
+			.append("text")
+			.attr("x", function(d, i) {
+			  let hori = d.values[d.values.length-1]["year"];
+			  return xScale(hori) + 10;
+			})
+            .attr("y", function(d, i) {
+			  let vert = d.values[d.values.length-1]["frequency"];
+			  return yScale(vert) + 5;
+			})
+            .attr("font-size", "40px")
+            .text(function(d,i) {
+			  
+			  return(d.key);
+			})
+			.style("fill", function(d,i) {
+			  return colors[i];
+			})
+          .attr("opacity", 1);
+          
+                
+      }
+    
+    ); //End CSV
+
 
 
    </script>
