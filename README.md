@@ -73,8 +73,7 @@ Par exemple, les mots qui décrivent correctement la categorie Gaming sont :
 
 #### Thèmes des chaînes ####
 
-Pendant les années 2005-2007, les thèmes dont les chaînes parlent le plus sont les thèmes liés à l'actualité. On voit en effet certains mots clés comme :
-* monde, interview, actualité, international, information
+Pendant les années 2005-2007, les thèmes dont les chaînes parlent le plus sont les thèmes liés à l'actualité. On voit en effet certains mots clés comme : monde, interview, actualité, international, information
 Rapidement, le gaming fait sont introduction vers 2006 dans Youtube (mots : jeux, jeu, twitch, minecraft...).
 Vers 2009 on voit une apparition des thèmes liés à la beauté et aux tutoriels. 
 Au début des années 2010, les catégories gaming et actualités semblent dominer le panorama youtube.
