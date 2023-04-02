@@ -121,9 +121,10 @@ dateOps = { year: 'numeric', month: 'long' };
 const urlParams = new URLSearchParams(window.location.search);
 const paramFile = urlParams.get('dataset')
  
-var allColors = new Object()
-let colors = ["paleturquoise","palevioletred","papayawhip","peru","pink","plum","powderblue","red","rosybrown","royalblue","saddlebrown","salmon","sandybrown","seagreen","seashell","sienna","silver","skyblue","slateblue","slategray","slategrey","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
+var allColors = {"Fortnite": "paleturquoise", "Film": "palevioletred", "Automobile": "papayawhip", "Musique": "peru", "Animaux": "pink", "Sports": "plum", "Voyage et événements": "powderblue", "Gaming": "red", "Divertissement": "rosybrown", "Politique": "royalblue", "Beauté": "teal", "Education": "salmon", "Associatif": "sandybrown", "Actualites": "seagreen", "fortnite": "paleturquoise", "comedie": "powderblue", "filme": "palevioletred", "film": "papayawhip", "cinema": "red", "acteurs": "pink", "tournage": "plum", "voiture": "paleturquoise", "auto": "palevioletred", "dakar": "papayawhip", "electrique": "rosybrown", "musique": "paleturquoise", "skyrock": "palevioletred", "guitare": "papayawhip", "chat": "paleturquoise", "chiennete": "palevioletred", "animaux": "papayawhip", "mercato": "paleturquoise", "goal": "palevioletred", "champions": "papayawhip", "pronostics": "peru", "musculation": "pink", "mbappe": "plum", "sport": "powderblue", "sportive": "red", "football": "rosybrown", "barca": "royalblue", "psg": "saddlebrown", "chelsea": "salmon", "madrid": "sandybrown", "barcelone": "paleturquoise", "usa": "palevioletred", "evenement": "papayawhip", "aventures": "peru", "aventure": "pink", "vacances": "plum", "qatar": "powderblue", "jeu": "paleturquoise", "fifa": "palevioletred", "league": "papayawhip", "streaming": "peru", "playstation": "pink", "games": "plum", "gameplay": "powderblue", "gta": "red", "roblox": "rosybrown", "minecraft": "royalblue", "cuisine": "paleturquoise", "livre": "palevioletred", "camera": "papayawhip", "culture": "peru", "theatre": "pink", "podcast": "plum", "lectures": "rosybrown", "magazine": "royalblue", "guerre": "paleturquoise", "actualite": "palevioletred", "international": "papayawhip", "analyse": "peru", "interview": "pink", "immigration": "plum", "nationale": "powderblue", "analyses": "red", "horoscope": "paleturquoise", "nutrition": "palevioletred", "beauty": "papayawhip", "astuce": "peru", "newsletter": "pink", "boutique": "plum", "meditation": "powderblue", "gossip\'afrique": "red", "coaching": "rosybrown", "education": "paleturquoise", "tech": "palevioletred", "techniques": "papayawhip", "technique": "peru", "digital": "pink", "energies": "plum", "logiciel": "powderblue", "formation": "red", "jesus": "paleturquoise", "famille": "palevioletred", "dimanche": "papayawhip", "social": "peru", "projet": "pink", "membres": "plum", "enfants": "powderblue", "priere": "red", "chretienne": "rosybrown", "ukraine": "paleturquoise", "covid-19": "palevioletred", "macron": "papayawhip", "journalistes": "peru", "coronavirus": "pink", "financier": "plum", "president": "powderblue", "russie": "red", "btc": "rosybrown", "politique": "royalblue", "russe": "saddlebrown"}
+let colors = ["paleturquoise","palevioletred","papayawhip","teal","pink","plum","powderblue","red","rosybrown","royalblue","peru","salmon","sandybrown","seagreen","seashell","sienna","silver","skyblue","slateblue","slategray","slategrey","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
        
+
 if(paramFile != null){
     dsetfile = paramFile
     urlhelper = "source="
@@ -134,13 +135,7 @@ d3.csv(dsetfile+".csv").then(function(data) {
 
 
 let cindexv = 1;
-   console.log(Object.keys(data[0]))
-    data.forEach(d => {
-        if(!(d.name in allColors)){
-            allColors[d.name] = colors[cindexv++]
-            console.log(d.name, allColors[d.name])
-        }
-   });
+
    data.forEach(d => {
       d.value = +d.value,
          d.lastValue = +d.lastValue,
