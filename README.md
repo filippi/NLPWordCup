@@ -3,6 +3,8 @@
 - Les mots des commentaires des chaines et vidéos, leurs fréquences
 - Données Jellysmack Keywords/Channels/Videos 
 
+Contenu du document :
+
   * [L'idée](#l-id-e)
   * [Description detaillée](#description-detaill-e)
     + [Introduction](#introduction)
