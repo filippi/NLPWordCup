@@ -152,7 +152,7 @@ for w in good_french :
 
 df = pd.read_pickle(pathfile+"filtered.pkl")
 
-g = df.groupby(pd.Grouper(key='Dates', freq='90D'))
+g = df.groupby(pd.Grouper(key='Dates', freq='36D'))
 dfs = [group for _,group in g]
 
 print("Grouped in %d tenth of year"%len(dfs))
