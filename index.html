@@ -32,7 +32,17 @@
     text.valueLabel{
        font-weight: 300;
     }
+    a {
+      font-family: sans-serif;
+      font-size: 14px;
+      color:black;
 
+    }
+a:link { text-decoration: none; color:black;}
+a:visited { text-decoration: none; color:black;}
+a:hover { text-decoration: none; color:black;}
+a:active { text-decoration: none;color:black; }
+       
     text.yearText{
        font-size: 64px;
        font-weight: 700;
@@ -128,7 +138,7 @@ var svg = d3.select("#barrace").append("svg")
 
 
 
-var tickDuration = 1000;
+var tickDuration = 1500;
 
 var top_n = 14;
 var height = 400;
