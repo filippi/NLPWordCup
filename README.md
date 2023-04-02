@@ -26,7 +26,8 @@ Les données fournies sont reparties dans trois fichiers différents:
 
 
 
-Les catégories:
+#### Les catégories: ####
+
 La liste de catégories était assez importante avec presque 90 choix différents pour classer les vidéos. La première étape était donc de simplifier cette liste pour n'en garder qu'une liste courte mais assez représentative. 
 La liste finale contient donc les catégories suivantes :
 * Film
