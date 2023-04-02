@@ -59,19 +59,67 @@
 
 <body style="background-color:white;">
 	<h3 style="font-family:sans-serif;">
-        Proportion des mots et thèmes dans les commentaires de vidéos de 2020 à 2023 
-    <br>Analyse interactive basée sur les commentaires de 1.600.000 vidéos 
-    <br>Vous pouvez cliquer sur les lignes en bas (pour changer la date)
-    <br>Vous pouvez aussi cliquer sur les barres pour le detail de chaque catégorie
-    <br><a href="?dataset=categories">Revenir aux catégories ici!</a>
-    </h3>
-    <h4 style="font-family:sans-serif;">Quelques repères (actualités) : Covid (fev 2020), Presidentielles (Avril 2021), Ukraine(jan 2022) <br>
-    Voir sur dataset chaine <a href="visu_channel.html">ici!</a> </h4>
-    
+         NLP Word Race - Alonso-Pinar/Filippi - Challenge Dataviz 2023 - Universita di Corsica</h3>
+    <h5 style="font-family:sans-serif;font-weight: 100;">
+     Proportion des mots et thèmes dans les commentaires de vidéos de 2020 à 2023. Analyse interactive basée sur les commentaires de 1.600.000 vidéos. <br>Vous pouvez cliquer sur les graphe du bas pour choisir une date. Vous pouvez aussi cliquer sur les boutons pour le detail de chaque catégorie
+    <br><a href="?dataset=categories">Revenir aux catégories ici!</a> Dataset chaine <a href="visu_channel.html">ici!</a> 
+     <br>Quelques repères (actualités) : Covid (fev 2020), Presidentielles (Avril 2021), Ukraine(jan 2022)
+    </h5>
+    <div id="container"></div>
+
     <div class="small-height" id="barrace"></div>
     <div class="small-height" id="chartword"></div>
-    
-    
+    <script src="catcolors.js"></script>
+     <script>
+   dsetfile = "categories";
+    urlhelper = "dataset=";
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramFile = urlParams.get('dataset')
+
+
+
+
+    if(paramFile != null){
+        dsetfile = paramFile
+        urlhelper = "dataset="
+    } 
+      
+         
+         // Get the container element where the table will be inserted
+         let container = document.getElementById("container");
+         
+         // Create the table element
+         let table = document.createElement("table");
+         
+         // Get the keys (column names) of the first object in the JSON data
+         let cols = Object.keys(catColorsData[0]);
+         
+         // Create the header element
+         let thead = document.createElement("thead");
+         let tr = document.createElement("tr");
+         
+         // Loop through the column names and create header cells
+         cols.forEach((item) => {
+            let th = document.createElement("td");
+            var createA = document.createElement('a');
+            var createAText = document.createTextNode(item);
+            createA.setAttribute('href', "?"+urlhelper+item);
+            createA.setAttribute('font-family','sans-serif');
+            createA.appendChild(createAText);
+            th.appendChild(createA);
+            th.setAttribute('bgcolor', catColorsData[0][item]);
+            
+           // th.innerText = "<a href=?"+urlhelper+item+">"+item+"</a>"; // Set the column name as the text of the header cell
+            tr.appendChild(th); // Append the header cell to the header row
+         });
+         thead.appendChild(tr); // Append the header row to the header
+         table.append(tr) // Append the header to the table
+         
+
+         container.appendChild(table) // Append the table to the container element
+      
+   </script>
+   
    <script>
       
 var svg = d3.select("#barrace").append("svg")
@@ -89,16 +137,17 @@ var width = 960;
 const margin = {
    top: 80,
    right: 0,
-   bottom: 5,
+   bottom: 0,
    left: 0
 };
 
 let barPadding = (height-(margin.bottom+margin.top))/(top_n*5);
 
+       
 let title = svg.append('text')
    .attr('class', 'title')
    .attr('y', 24)
-   .html('NLP Word Race - Challenge Dataviz 2023, les mots des vidéos - Alonso-Pinar/Filippi');
+   .html("Vue du thème "+dsetfile);
 
 let subTitle = svg.append("text")
    .attr("class", "subTitle")
@@ -114,23 +163,12 @@ let caption = svg.append('text')
 
 let year = 1;
        
-dsetfile = "categories";
-urlhelper = "dataset=";
+
 var rectangleYear = null;
 dateOps = { year: 'numeric', month: 'long' };
-const urlParams = new URLSearchParams(window.location.search);
-const paramFile = urlParams.get('dataset')
- 
-var allColors = {"Fortnite": "paleturquoise", "Film": "palevioletred", "Automobile": "papayawhip", "Musique": "peru", "Animaux": "pink", "Sports": "plum", "Voyage et événements": "powderblue", "Gaming": "red", "Divertissement": "rosybrown", "Politique": "royalblue", "Beauté": "teal", "Education": "salmon", "Associatif": "sandybrown", "Actualites": "seagreen", "fortnite": "paleturquoise", "comedie": "powderblue", "filme": "palevioletred", "film": "papayawhip", "cinema": "red", "acteurs": "pink", "tournage": "plum", "voiture": "paleturquoise", "auto": "palevioletred", "dakar": "papayawhip", "electrique": "rosybrown", "musique": "paleturquoise", "skyrock": "palevioletred", "guitare": "papayawhip", "chat": "paleturquoise", "chiennete": "palevioletred", "animaux": "papayawhip", "mercato": "paleturquoise", "goal": "palevioletred", "champions": "papayawhip", "pronostics": "peru", "musculation": "pink", "mbappe": "plum", "sport": "powderblue", "sportive": "red", "football": "rosybrown", "barca": "royalblue", "psg": "saddlebrown", "chelsea": "salmon", "madrid": "sandybrown", "barcelone": "paleturquoise", "usa": "palevioletred", "evenement": "papayawhip", "aventures": "peru", "aventure": "pink", "vacances": "plum", "qatar": "powderblue", "jeu": "paleturquoise", "fifa": "palevioletred", "league": "papayawhip", "streaming": "peru", "playstation": "pink", "games": "plum", "gameplay": "powderblue", "gta": "red", "roblox": "rosybrown", "minecraft": "royalblue", "cuisine": "paleturquoise", "livre": "palevioletred", "camera": "papayawhip", "culture": "peru", "theatre": "pink", "podcast": "plum", "lectures": "rosybrown", "magazine": "royalblue", "guerre": "paleturquoise", "actualite": "palevioletred", "international": "papayawhip", "analyse": "peru", "interview": "pink", "immigration": "plum", "nationale": "powderblue", "analyses": "red", "horoscope": "paleturquoise", "nutrition": "palevioletred", "beauty": "papayawhip", "astuce": "peru", "newsletter": "pink", "boutique": "plum", "meditation": "powderblue", "gossip\'afrique": "red", "coaching": "rosybrown", "education": "paleturquoise", "tech": "palevioletred", "techniques": "papayawhip", "technique": "peru", "digital": "pink", "energies": "plum", "logiciel": "powderblue", "formation": "red", "jesus": "paleturquoise", "famille": "palevioletred", "dimanche": "papayawhip", "social": "peru", "projet": "pink", "membres": "plum", "enfants": "powderblue", "priere": "red", "chretienne": "rosybrown", "ukraine": "paleturquoise", "covid-19": "palevioletred", "macron": "papayawhip", "journalistes": "peru", "coronavirus": "pink", "financier": "plum", "president": "powderblue", "russie": "red", "btc": "rosybrown", "politique": "royalblue", "russe": "saddlebrown"}
-let colors = ["paleturquoise","palevioletred","papayawhip","teal","pink","plum","powderblue","red","rosybrown","royalblue","peru","salmon","sandybrown","seagreen","seashell","sienna","silver","skyblue","slateblue","slategray","slategrey","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
-       
 
-if(paramFile != null){
-    dsetfile = paramFile
-    urlhelper = "source="
-} 
        
-d3.csv(dsetfile+".csv").then(function(data) {
+d3.csv("data/"+dsetfile+".csv").then(function(data) {
    //if (error) throw error;
 
 
@@ -192,7 +230,7 @@ let cindexv = 1;
       .attr('x', d => x(d.value)-8)
       .attr('y', d => y(d.rank)+5+((y(1)-y(0))/2)+1)
       .style('text-anchor', 'end')
-      .html(d => "click > <a href=?"+urlhelper+d.name+">"+d.name+"</a>") ; 
+      .html(d => "<a href=?"+urlhelper+d.name+">"+d.name+"</a>") ; 
 
    svg.selectAll('text.valueLabel')
       .data(yearSlice, d => d.name)
@@ -201,7 +239,7 @@ let cindexv = 1;
       .attr('class', 'valueLabel')
       .attr('x', d => x(d.value)+5)
       .attr('y', d => y(d.rank)+5+((y(1)-y(0))/2)+1)
-      .text(d => d3.format(',.0f')(d.lastValue));
+      .text(d => d3.format(',.2f')(d.lastValue));
 
    let yearText = svg.append('text')
       .attr('class', 'yearText')
@@ -304,7 +342,7 @@ let cindexv = 1;
          .attr('class', 'valueLabel')
          .attr('x', d => x(d.value)+5)
          .attr('y', d => y(top_n+1)+5)
-         .text(d => d3.format(',.0f')(d.lastValue))
+         .text(d => d3.format(',.2f')(d.lastValue))
          .transition()
          .duration(tickDuration)
          .ease(d3.easeLinear)
@@ -317,9 +355,9 @@ let cindexv = 1;
          .attr('x', d => x(d.value)+5)
          .attr('y', d => y(d.rank)+5+((y(1)-y(0))/2)+1)
          .tween("text", function(d) {
-            let i = d3.interpolateRound(d.lastValue, d.value);
+            let i = d3.interpolateRound(d.lastValue*10, d.value*10);
             return function(t) {
-               this.textContent = d3.format(',')(i(t));
+               this.textContent = d3.format(',.2f')(i(t)/10.);
             };
          });
 
@@ -375,11 +413,19 @@ var svg2 = d3.select("#chartword")
     .on("click", function() {
       
         var coordinates= d3.mouse(this);
-        year = ~~(coordinates[0]*100/width);
+        var newD = coordinates[0]*100/width
+        if(newD<80)
+            year = ~~newD;
        
       d3.event.stopPropagation();
     });
-		  
+   rectanglebg = svg2.append("rect")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("width", width)
+      .attr("height", height)
+       .attr('fill', 'snow');
+       
 	svg2.append("g")
 		.attr("width", width)
 		.attr("height", height);
@@ -404,7 +450,7 @@ var svg2 = d3.select("#chartword")
     }
     
     <!-- Retrieve data from CSV -->
-    d3.csv(dsetfile+"_p.csv", parseRow).then(    
+    d3.csv("data/"+dsetfile+"_p.csv", parseRow).then(    
       function (data){       
      
         let vmax = 0;

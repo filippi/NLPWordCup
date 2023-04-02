@@ -23,9 +23,8 @@ import numpy as np
 import pandas as pd
 from os import path
 import csv
+import json
 
-dkw = pd.read_pickle("lastRunAllVids.pk")
-#name,value,year,lastValue,rank
 
 import matplotlib.pyplot as plt
 
@@ -33,20 +32,22 @@ import matplotlib.pyplot as plt
 
 
 categories={}
-categories["Fortnite"] = ["fortnite"]
 categories["Film"] = ["comedie","filme","film","cinema","acteurs","tournage"]
-categories["Automobile"] = ["voiture","auto","dakar","electrique"]
-categories["Musique"] = ["musique","skyrock","guitare"]
+categories["Automobile"] = ["voiture","auto","dakar","electrique","moto"]
+categories["Musique"] = ["musique","skyrock","guitare","chansons"]
 categories["Animaux"] = ["chat","chiennete","animaux"]
 categories["Sports"] = ["mercato","goal","champions","pronostics","musculation","mbappe","sport","sportive","football","barca","psg", "chelsea","madrid"]
-categories["Voyage et événements"] = ["barcelone","usa","evenement","aventures","aventure","vacances","qatar"]
-categories["Gaming"] = ["jeu","fifa","league","streaming", "playstation","games","gameplay","gta","roblox","minecraft"] # "fortnite"
+categories["Voyages"] = ["barcelone","usa","evenement","aventures","aventure","vacances","qatar"]
+categories["Gaming"] = ["jeu","lol","fifa","league","streaming", "playstation","games","gameplay","gta","roblox","minecraft"] # "fortnite"
 categories["Divertissement"] = ["cuisine","livre", "camera", "culture", "theatre", "podcast", "comedie", "cinema", "lectures", "magazine"]
-categories["Politique"] = ["guerre","actualite", "international","analyse", "interview", "immigration", "nationale", "analyses" ]
-categories["Beauté"] = ["horoscope","nutrition", "beauty", "astuce", "newsletter", "boutique", "meditation", "gossip'afrique", "coaching" ]
+categories["Politique"] = ["guerre","actualite", "international","analyse", "interview", "immigration", "nationale", "analyses" ,"poutine","politique" ]
+categories["Beaute"] = ["horoscope","nutrition", "beauty", "astuce", "newsletter", "boutique", "meditation", "gossip'afrique", "coaching" ]
 categories["Education"] = ["education", "tech", "techniques","technique","digital", "energies", "logiciel", "formation", "electrique"]
-categories["Associatif"] = ["jesus","famille", "dimanche", "social", "projet", "membres", "enfants", "priere","chretienne" ]
-categories["Actualites"] = ["ukraine", "covid-19", "macron", "journalistes", "coronavirus", "financier", "president", "russie", "btc","politique" ,"russe"]
+categories["Associatif"] = ["jesus","famille", "dimanche", "social", "projet", "membres", "enfants", "priere","chretienne","argent" ]
+categories["Actualites"] = ["ukraine", "covid-19", "macron", "journalistes", "coronavirus", "financier", "president", "russie", "btc","russe"]
+categories["Clubs_foot"] = ["marseille","liverpool","barca","psg", "chelsea","madrid","manchester","monaco","om","bayern"]
+categories["Fortnite"] = ["fortnite"]
+
 
 
 def genCSVforWeb(fname, listOfKeys, dfs):
@@ -62,7 +63,7 @@ def genCSVforWeb(fname, listOfKeys, dfs):
     
     
     
-    with open(fname+".csv",  'w', newline='') as csvfile:
+    with open("data/"+fname+".csv",  'w', newline='') as csvfile:
         mycsvwriter = csv.writer(csvfile, delimiter=',')
         mycsvwriter.writerow(["name","value","year","lastValue","rank"])
         
@@ -76,7 +77,7 @@ def genCSVforWeb(fname, listOfKeys, dfs):
                     lastValue=allVids.loc[index-1][keyRow]
                 mycsvwriter.writerow([keyRow,rankedRow[keyRow],index,lastValue,ni+1])
     
-    with open(fname+"_p.csv",  'w', newline='') as csvfile:
+    with open("data/"+fname+"_p.csv",  'w', newline='') as csvfile:
         mycsvwriter = csv.writer(csvfile, delimiter=',')
         mycsvwriter.writerow(["name","year","frequency"])
         
@@ -85,7 +86,7 @@ def genCSVforWeb(fname, listOfKeys, dfs):
                 mycsvwriter.writerow([k,index,int(row[k]*100)])
         
     
-    allVids.plot()
+ 
 
 dkw = pd.read_pickle("lastRunAllVids.pk")
 
@@ -125,4 +126,25 @@ for cat in categories:
     genCSVforWeb(fname, listOfKeys, dfs)
 
 
+
+colors = ["paleturquoise","palevioletred","papayawhip","peru","pink","plum","powderblue","red","rosybrown","royalblue","salmon","sandybrown","seagreen","silver","skyblue","slateblue","slategray","slategrey","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
+
+allColors={}
+catColors={}
+for i,cat in enumerate(categories):    
+    allColors[cat] = colors[i]
+    catColors[cat] = colors[i]
+    
+for cat in categories:    
+    for i,scat in enumerate(categories[cat]):    
+        allColors[scat] = colors[i]
+
+
+with open('catcolors.js', 'w') as f:
+    f.write("var allColors = ")
+    json.dump(allColors, f)
+    f.write("\n var catColorsData = [")
+    json.dump(catColors, f)
+    f.write("];\n var colors = "+str(colors))
+ 
 
