@@ -3,6 +3,18 @@
 - Les mots des commentaires des chaines et vidéos, leurs fréquences
 - Données Jellysmack Keywords/Channels/Videos 
 
+  * [L'idée](#l-id-e)
+  * [Description detaillée](#description-detaill-e)
+    + [Introduction](#introduction)
+    + [Pre processing](#pre-processing)
+      - [Les catégories:](#les-cat-gories-)
+  * [Utilisation](#utilisation)
+  * [Technos](#technos)
+  * [La ou on a pompé les morceaux de code](#la-ou-on-a-pomp--les-morceaux-de-code)
+  * [L'équipe](#l--quipe)
+  * [fichiers](#fichiers)
+
+
 ## L'idée
 Une grande partie du travail a été d'extraire les données des 1.6 Go de texte bien formatés, puis d'en faire une projection se prêtant à l'analyse.
 Nous avons choisi 4 étapes intermédiaires:
