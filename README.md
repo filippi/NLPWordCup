@@ -11,7 +11,7 @@ Nous avons choisi 4 étapes intermédiaires:
 * Une première pour trouver les mots à ne pas inclure, mais aussi parser les fichiers,  ce qui a permit de trouver :
 * les mots à inclure, qu'il a quand même fallu filtrer, on a donc une liste de 1000+ mots les plus fréquents
 * pour chacun de ces mots, on calcule une fréquence sur chaque entrée (vidéo/chaine), on en fait un sous ensemble (avec la frequence et nb vue)
-* enfin on extrait de cette dataframe (1.5 millions d'enregistrements) des résumés par mois, et on synthétise dans un fichier 
+* enfin on extrait de cette dataframe (1.5 millions d'enregistrements) des résumés par 2 semaines (moyenne glissante), et on synthétise dans un fichier 
 
 Nous appliquons la même idée pour les chaînes youtube et leur description.
 
