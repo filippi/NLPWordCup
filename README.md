@@ -32,7 +32,7 @@ Les données fournies sont reparties dans trois fichiers différents:
 ### Pre processing
 
 #### Les vidéos youtube: ####
-Les données relatives aux chaînes youtube contiennent environ 1 500 000 vidéos de youtube différentes et pour chaque vidéo on dispose des informations :
+Les données relatives aux vidéos youtube contiennent environ 1 500 000 vidéos de youtube différentes et pour chaque vidéo on dispose des informations :
 * nom, 
 * date de création, 
 * nombre de visualisations,
