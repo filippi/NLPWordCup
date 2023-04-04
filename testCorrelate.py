@@ -55,9 +55,24 @@ corCouples.rename(columns = {'level_1':'B'}, inplace = True)
 corCouples.rename(columns = {'level_0':'A'}, inplace = True)
 corCouples.rename(columns = {0:'p'}, inplace = True)
 
-strange  =corCouples[corCouples['p'].between(.8, .99)]
+strange  =corCouples[corCouples['p'].between(.93, .98)]
 unstrange  =corCouples[corCouples['p'].between(.01, .02)]
 
 print(unstrange[unstrange["A"] == "macron"], strange[strange["A"] == "macron"])
 
+for i, row in strange.iterrows():
+    print(row["A"],row["B"],row["p"])
+
+fun= [ ['vierge', 'partenaire'],
+ ['homme', 'seduction'],
+ ['qatar', 'couleurs'],
+ ['conclusion', 'introduction'],
+ ['theorie', 'midas'],
+ ['jesus', 'snapchat'],
+ ['ukraine', 'cryptos'],
+ ['covid-19', 'cuisine']]
+for a,b in fun:
+    print(a,b)
+    cKDat[[a,b]].plot()
+    
 

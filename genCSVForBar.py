@@ -40,14 +40,19 @@ categories["Sports"] = ["mercato","goal","champions","pronostics","musculation",
 categories["Voyages"] = ["barcelone","usa","evenement","aventures","aventure","vacances","qatar"]
 categories["Gaming"] = ["jeu","lol","fifa","league","streaming", "playstation","games","gameplay","gta","roblox","minecraft"] # "fortnite"
 categories["Divertissement"] = ["cuisine","livre", "camera", "culture", "theatre", "podcast", "comedie", "cinema", "lectures", "magazine"]
-categories["Politique"] = ["guerre","actualite", "international","analyse", "interview", "immigration", "nationale", "analyses" ,"poutine","politique" ]
+categories["Politique"] = ["guerre", "international","analyse", "interview", "immigration", "nationale", "analyses" ,"poutine","politique" ]
 categories["Beaute"] = ["horoscope","nutrition", "beauty", "astuce", "newsletter", "boutique", "meditation", "gossip'afrique", "coaching" ]
 categories["Education"] = ["education", "tech", "techniques","technique","digital", "energies", "logiciel", "formation", "electrique"]
 categories["Associatif"] = ["jesus","famille", "dimanche", "social", "projet", "membres", "enfants", "priere","chretienne","argent" ]
-categories["Actualites"] = ["ukraine", "covid-19", "macron", "journalistes", "coronavirus", "financier", "president", "russie", "btc","russe"]
+categories["Actualites"] = ["ukraine","actualite", "covid-19", "macron", "journalistes", "coronavirus", "financier", "president", "russie", "btc","russe"]
 categories["Clubs_foot"] = ["marseille","liverpool","barca","psg", "chelsea","madrid","manchester","monaco","om","bayern"]
 categories["Fortnite"] = ["fortnite"]
+categories["Jesus-Snap"] = ["jesus","snapchat"]
+categories["Ukraine-Cryptos"] = ["ukraine","cryptos*10"]
+categories["Covid-cuisine"] = ["covid-19","cuisine*600"]
 
+
+spurious=[]
 
 
 def genCSVforWeb(fname, listOfKeys, dfs):
@@ -90,8 +95,18 @@ def genCSVforWeb(fname, listOfKeys, dfs):
 
 dkw = pd.read_pickle("lastRunAllVids.pk")
 
+
 dkw['Date'] =  pd.to_datetime(dkw['DateDay'])
 dkw.set_index('Date', inplace=True)
+
+
+
+dkw["cryptos*10"]=dkw["ukraine"].max()*((dkw["cryptos"]-dkw["cryptos"].min())/(dkw["cryptos"].max()-dkw["cryptos"].min()))
+dkw["cuisine*600"]=600*(dkw["cuisine"]-dkw["cuisine"].min())/(dkw["cuisine"].max()-dkw["cuisine"].min())
+
+#dkw["cuisine*20"]=dkw["covid-19"].min()+(dkw["cuisine*20"]-dkw["cuisine*20"].min())*(dkw["covid-19"].max()-dkw["covid-19"].min())
+
+
 
 dcat = pd.DataFrame(index=dkw.index, columns=list(categories.keys()))
 dcat = dcat.fillna(0)
@@ -99,6 +114,8 @@ dcat = dcat.fillna(0)
 for cat in categories:
     for catKW in categories[cat]:
         dcat[cat] = dcat[cat] + (dkw[catKW]*(1))/dkw['NVIDEOS']
+
+
 
 dcat['Date'] = dcat.index
 g = dcat.groupby(pd.Grouper(key='Date', freq='2W'))
@@ -127,7 +144,7 @@ for cat in categories:
 
 
 
-colors = ["paleturquoise","palevioletred","papayawhip","peru","pink","plum","powderblue","red","rosybrown","royalblue","salmon","sandybrown","seagreen","silver","skyblue","slateblue","slategray","slategrey","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
+colors = ["paleturquoise","palevioletred","papayawhip","pink","plum","red","rosybrown","royalblue","salmon","sandybrown","seagreen","silver","slateblue","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
 
 allColors={}
 catColors={}

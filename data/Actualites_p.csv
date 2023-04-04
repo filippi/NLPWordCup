@@ -1,5 +1,6 @@
 name,year,frequency
 ukraine,1,44
+actualite,1,299
 covid-19,1,0
 macron,1,221
 journalistes,1,52
@@ -10,6 +11,7 @@ russie,1,89
 btc,1,15
 russe,1,85
 ukraine,2,41
+actualite,2,304
 covid-19,2,0
 macron,2,258
 journalistes,2,37
@@ -20,6 +22,7 @@ russie,2,129
 btc,2,13
 russe,2,94
 ukraine,3,10
+actualite,3,313
 covid-19,3,8
 macron,3,220
 journalistes,3,32
@@ -30,6 +33,7 @@ russie,3,84
 btc,3,3
 russe,3,57
 ukraine,4,26
+actualite,4,298
 covid-19,4,61
 macron,4,259
 journalistes,4,31
@@ -40,6 +44,7 @@ russie,4,116
 btc,4,0
 russe,4,72
 ukraine,5,28
+actualite,5,324
 covid-19,5,169
 macron,5,251
 journalistes,5,25
@@ -50,6 +55,7 @@ russie,5,152
 btc,5,0
 russe,5,105
 ukraine,6,14
+actualite,6,350
 covid-19,6,737
 macron,6,212
 journalistes,6,25
@@ -60,6 +66,7 @@ russie,6,170
 btc,6,0
 russe,6,89
 ukraine,7,9
+actualite,7,306
 covid-19,7,1242
 macron,7,174
 journalistes,7,34
@@ -70,6 +77,7 @@ russie,7,144
 btc,7,3
 russe,7,70
 ukraine,8,3
+actualite,8,309
 covid-19,8,1149
 macron,8,223
 journalistes,8,21
@@ -80,6 +88,7 @@ russie,8,108
 btc,8,11
 russe,8,88
 ukraine,9,8
+actualite,9,318
 covid-19,9,947
 macron,9,231
 journalistes,9,23
@@ -90,6 +99,7 @@ russie,9,126
 btc,9,13
 russe,9,77
 ukraine,10,9
+actualite,10,327
 covid-19,10,848
 macron,10,130
 journalistes,10,23
@@ -100,6 +110,7 @@ russie,10,105
 btc,10,11
 russe,10,50
 ukraine,11,1
+actualite,11,330
 covid-19,11,704
 macron,11,92
 journalistes,11,27
@@ -110,6 +121,7 @@ russie,11,74
 btc,11,8
 russe,11,26
 ukraine,12,1
+actualite,12,360
 covid-19,12,503
 macron,12,182
 journalistes,12,39
@@ -120,6 +132,7 @@ russie,12,65
 btc,12,3
 russe,12,37
 ukraine,13,7
+actualite,13,385
 covid-19,13,474
 macron,13,320
 journalistes,13,28
@@ -130,6 +143,7 @@ russie,13,130
 btc,13,4
 russe,13,83
 ukraine,14,9
+actualite,14,366
 covid-19,14,488
 macron,14,330
 journalistes,14,20
@@ -140,6 +154,7 @@ russie,14,135
 btc,14,9
 russe,14,92
 ukraine,15,18
+actualite,15,348
 covid-19,15,469
 macron,15,217
 journalistes,15,20
@@ -150,6 +165,7 @@ russie,15,89
 btc,15,12
 russe,15,74
 ukraine,16,25
+actualite,16,343
 covid-19,16,333
 macron,16,169
 journalistes,16,24
@@ -160,6 +176,7 @@ russie,16,137
 btc,16,8
 russe,16,99
 ukraine,17,13
+actualite,17,330
 covid-19,17,251
 macron,17,188
 journalistes,17,35
@@ -170,6 +187,7 @@ russie,17,120
 btc,17,5
 russe,17,147
 ukraine,18,9
+actualite,18,313
 covid-19,18,313
 macron,18,273
 journalistes,18,44
@@ -180,6 +198,7 @@ russie,18,116
 btc,18,6
 russe,18,145
 ukraine,19,12
+actualite,19,284
 covid-19,19,387
 macron,19,263
 journalistes,19,66
@@ -190,6 +209,7 @@ russie,19,159
 btc,19,27
 russe,19,105
 ukraine,20,21
+actualite,20,282
 covid-19,20,416
 macron,20,200
 journalistes,20,77
@@ -200,6 +220,7 @@ russie,20,146
 btc,20,35
 russe,20,87
 ukraine,21,20
+actualite,21,291
 covid-19,21,388
 macron,21,299
 journalistes,21,43
@@ -210,6 +231,7 @@ russie,21,119
 btc,21,21
 russe,21,75
 ukraine,22,8
+actualite,22,305
 covid-19,22,334
 macron,22,333
 journalistes,22,40
@@ -220,6 +242,7 @@ russie,22,89
 btc,22,18
 russe,22,58
 ukraine,23,3
+actualite,23,312
 covid-19,23,347
 macron,23,246
 journalistes,23,70
@@ -230,6 +253,7 @@ russie,23,101
 btc,23,13
 russe,23,66
 ukraine,24,3
+actualite,24,293
 covid-19,24,395
 macron,24,221
 journalistes,24,69
@@ -240,6 +264,7 @@ russie,24,106
 btc,24,19
 russe,24,99
 ukraine,25,8
+actualite,25,300
 covid-19,25,340
 macron,25,228
 journalistes,25,47
@@ -250,6 +275,7 @@ russie,25,59
 btc,25,25
 russe,25,101
 ukraine,26,6
+actualite,26,291
 covid-19,26,370
 macron,26,158
 journalistes,26,24
@@ -260,6 +286,7 @@ russie,26,83
 btc,26,26
 russe,26,106
 ukraine,27,1
+actualite,27,317
 covid-19,27,416
 macron,27,131
 journalistes,27,15
@@ -270,6 +297,7 @@ russie,27,82
 btc,27,19
 russe,27,92
 ukraine,28,7
+actualite,28,330
 covid-19,28,407
 macron,28,100
 journalistes,28,18
@@ -280,6 +308,7 @@ russie,28,93
 btc,28,21
 russe,28,111
 ukraine,29,12
+actualite,29,287
 covid-19,29,333
 macron,29,86
 journalistes,29,31
@@ -290,6 +319,7 @@ russie,29,169
 btc,29,42
 russe,29,174
 ukraine,30,7
+actualite,30,285
 covid-19,30,255
 macron,30,100
 journalistes,30,37
@@ -300,6 +330,7 @@ russie,30,160
 btc,30,39
 russe,30,150
 ukraine,31,10
+actualite,31,333
 covid-19,31,250
 macron,31,101
 journalistes,31,31
@@ -310,6 +341,7 @@ russie,31,91
 btc,31,27
 russe,31,99
 ukraine,32,34
+actualite,32,371
 covid-19,32,228
 macron,32,115
 journalistes,32,39
@@ -320,6 +352,7 @@ russie,32,82
 btc,32,25
 russe,32,98
 ukraine,33,59
+actualite,33,374
 covid-19,33,228
 macron,33,145
 journalistes,33,36
@@ -330,6 +363,7 @@ russie,33,99
 btc,33,19
 russe,33,87
 ukraine,34,87
+actualite,34,376
 covid-19,34,225
 macron,34,167
 journalistes,34,25
@@ -340,6 +374,7 @@ russie,34,167
 btc,34,20
 russe,34,92
 ukraine,35,65
+actualite,35,356
 covid-19,35,183
 macron,35,163
 journalistes,35,38
@@ -350,6 +385,7 @@ russie,35,187
 btc,35,18
 russe,35,96
 ukraine,36,15
+actualite,36,394
 covid-19,36,118
 macron,36,116
 journalistes,36,42
@@ -360,6 +396,7 @@ russie,36,105
 btc,36,46
 russe,36,64
 ukraine,37,5
+actualite,37,462
 covid-19,37,73
 macron,37,115
 journalistes,37,33
@@ -370,6 +407,7 @@ russie,37,68
 btc,37,79
 russe,37,48
 ukraine,38,24
+actualite,38,491
 covid-19,38,57
 macron,38,167
 journalistes,38,36
@@ -380,6 +418,7 @@ russie,38,78
 btc,38,89
 russe,38,48
 ukraine,39,46
+actualite,39,492
 covid-19,39,52
 macron,39,138
 journalistes,39,35
@@ -390,6 +429,7 @@ russie,39,80
 btc,39,97
 russe,39,43
 ukraine,40,27
+actualite,40,487
 covid-19,40,68
 macron,40,131
 journalistes,40,28
@@ -400,6 +440,7 @@ russie,40,48
 btc,40,79
 russe,40,34
 ukraine,41,7
+actualite,41,496
 covid-19,41,93
 macron,41,139
 journalistes,41,36
@@ -410,6 +451,7 @@ russie,41,28
 btc,41,65
 russe,41,35
 ukraine,42,6
+actualite,42,512
 covid-19,42,100
 macron,42,107
 journalistes,42,33
@@ -420,6 +462,7 @@ russie,42,29
 btc,42,71
 russe,42,32
 ukraine,43,5
+actualite,43,530
 covid-19,43,90
 macron,43,109
 journalistes,43,24
@@ -430,6 +473,7 @@ russie,43,38
 btc,43,62
 russe,43,30
 ukraine,44,16
+actualite,44,590
 covid-19,44,81
 macron,44,129
 journalistes,44,34
@@ -440,6 +484,7 @@ russie,44,44
 btc,44,77
 russe,44,32
 ukraine,45,15
+actualite,45,648
 covid-19,45,78
 macron,45,175
 journalistes,45,38
@@ -450,6 +495,7 @@ russie,45,51
 btc,45,101
 russe,45,33
 ukraine,46,5
+actualite,46,640
 covid-19,46,77
 macron,46,216
 journalistes,46,35
@@ -460,6 +506,7 @@ russie,46,63
 btc,46,93
 russe,46,36
 ukraine,47,5
+actualite,47,631
 covid-19,47,69
 macron,47,235
 journalistes,47,37
@@ -470,6 +517,7 @@ russie,47,59
 btc,47,75
 russe,47,35
 ukraine,48,4
+actualite,48,640
 covid-19,48,60
 macron,48,227
 journalistes,48,33
@@ -480,6 +528,7 @@ russie,48,51
 btc,48,60
 russe,48,33
 ukraine,49,6
+actualite,49,636
 covid-19,49,68
 macron,49,208
 journalistes,49,31
@@ -490,6 +539,7 @@ russie,49,48
 btc,49,64
 russe,49,34
 ukraine,50,17
+actualite,50,652
 covid-19,50,85
 macron,50,155
 journalistes,50,32
@@ -500,6 +550,7 @@ russie,50,49
 btc,50,65
 russe,50,37
 ukraine,51,61
+actualite,51,575
 covid-19,51,83
 macron,51,186
 journalistes,51,23
@@ -510,6 +561,7 @@ russie,51,83
 btc,51,32
 russe,51,52
 ukraine,52,69
+actualite,52,503
 covid-19,52,105
 macron,52,152
 journalistes,52,18
@@ -520,6 +572,7 @@ russie,52,98
 btc,52,8
 russe,52,71
 ukraine,53,50
+actualite,53,624
 covid-19,53,150
 macron,53,146
 journalistes,53,32
@@ -530,6 +583,7 @@ russie,53,104
 btc,53,7
 russe,53,74
 ukraine,54,221
+actualite,54,1056
 covid-19,54,165
 macron,54,233
 journalistes,54,45
@@ -540,6 +594,7 @@ russie,54,214
 btc,54,10
 russe,54,114
 ukraine,55,393
+actualite,55,1308
 covid-19,55,130
 macron,55,341
 journalistes,55,39
@@ -550,6 +605,7 @@ russie,55,273
 btc,55,80
 russe,55,162
 ukraine,56,1171
+actualite,56,1226
 covid-19,56,71
 macron,56,370
 journalistes,56,33
@@ -560,6 +616,7 @@ russie,56,737
 btc,56,168
 russe,56,500
 ukraine,57,2354
+actualite,57,1244
 covid-19,57,39
 macron,57,221
 journalistes,57,51
@@ -570,6 +627,7 @@ russie,57,1249
 btc,57,196
 russe,57,863
 ukraine,58,1962
+actualite,58,1094
 covid-19,58,26
 macron,58,123
 journalistes,58,88
@@ -580,6 +638,7 @@ russie,58,880
 btc,58,201
 russe,58,611
 ukraine,59,964
+actualite,59,916
 covid-19,59,29
 macron,59,158
 journalistes,59,76
@@ -590,6 +649,7 @@ russie,59,441
 btc,59,158
 russe,59,281
 ukraine,60,526
+actualite,60,832
 covid-19,60,27
 macron,60,323
 journalistes,60,40
@@ -600,6 +660,7 @@ russie,60,280
 btc,60,105
 russe,60,172
 ukraine,61,284
+actualite,61,726
 covid-19,61,15
 macron,61,303
 journalistes,61,34
@@ -610,6 +671,7 @@ russie,61,179
 btc,61,91
 russe,61,118
 ukraine,62,285
+actualite,62,688
 covid-19,62,15
 macron,62,146
 journalistes,62,36
@@ -620,6 +682,7 @@ russie,62,207
 btc,62,85
 russe,62,131
 ukraine,63,289
+actualite,63,692
 covid-19,63,18
 macron,63,86
 journalistes,63,40
@@ -630,6 +693,7 @@ russie,63,250
 btc,63,72
 russe,63,146
 ukraine,64,279
+actualite,64,707
 covid-19,64,16
 macron,64,112
 journalistes,64,41
@@ -640,6 +704,7 @@ russie,64,256
 btc,64,65
 russe,64,138
 ukraine,65,225
+actualite,65,695
 covid-19,65,14
 macron,65,136
 journalistes,65,40
@@ -650,6 +715,7 @@ russie,65,230
 btc,65,63
 russe,65,117
 ukraine,66,184
+actualite,66,658
 covid-19,66,17
 macron,66,110
 journalistes,66,36
@@ -660,6 +726,7 @@ russie,66,229
 btc,66,57
 russe,66,118
 ukraine,67,170
+actualite,67,675
 covid-19,67,15
 macron,67,115
 journalistes,67,38
@@ -670,6 +737,7 @@ russie,67,236
 btc,67,59
 russe,67,114
 ukraine,68,127
+actualite,68,687
 covid-19,68,9
 macron,68,91
 journalistes,68,47
@@ -680,6 +748,7 @@ russie,68,210
 btc,68,55
 russe,68,94
 ukraine,69,104
+actualite,69,642
 covid-19,69,9
 macron,69,91
 journalistes,69,49
@@ -690,6 +759,7 @@ russie,69,181
 btc,69,54
 russe,69,85
 ukraine,70,107
+actualite,70,680
 covid-19,70,8
 macron,70,124
 journalistes,70,48
@@ -700,6 +770,7 @@ russie,70,172
 btc,70,59
 russe,70,89
 ukraine,71,140
+actualite,71,732
 covid-19,71,7
 macron,71,103
 journalistes,71,51
@@ -710,6 +781,7 @@ russie,71,204
 btc,71,64
 russe,71,96
 ukraine,72,192
+actualite,72,709
 covid-19,72,8
 macron,72,83
 journalistes,72,51
@@ -720,6 +792,7 @@ russie,72,281
 btc,72,63
 russe,72,111
 ukraine,73,220
+actualite,73,716
 covid-19,73,10
 macron,73,76
 journalistes,73,53
@@ -730,6 +803,7 @@ russie,73,297
 btc,73,59
 russe,73,106
 ukraine,74,205
+actualite,74,734
 covid-19,74,11
 macron,74,80
 journalistes,74,56
@@ -740,6 +814,7 @@ russie,74,271
 btc,74,56
 russe,74,100
 ukraine,75,187
+actualite,75,725
 covid-19,75,10
 macron,75,83
 journalistes,75,66
@@ -750,6 +825,7 @@ russie,75,268
 btc,75,56
 russe,75,101
 ukraine,76,210
+actualite,76,719
 covid-19,76,11
 macron,76,95
 journalistes,76,75
@@ -760,6 +836,7 @@ russie,76,259
 btc,76,57
 russe,76,98
 ukraine,77,220
+actualite,77,734
 covid-19,77,12
 macron,77,97
 journalistes,77,79
@@ -770,6 +847,7 @@ russie,77,264
 btc,77,51
 russe,77,112
 ukraine,78,198
+actualite,78,727
 covid-19,78,20
 macron,78,77
 journalistes,78,66
@@ -780,6 +858,7 @@ russie,78,256
 btc,78,38
 russe,78,114
 ukraine,79,171
+actualite,79,715
 covid-19,79,22
 macron,79,75
 journalistes,79,62
@@ -790,6 +869,7 @@ russie,79,201
 btc,79,40
 russe,79,94
 ukraine,80,185
+actualite,80,761
 covid-19,80,13
 macron,80,98
 journalistes,80,86
@@ -800,6 +880,7 @@ russie,80,167
 btc,80,52
 russe,80,74
 ukraine,81,219
+actualite,81,852
 covid-19,81,8
 macron,81,112
 journalistes,81,85
