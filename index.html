@@ -41,14 +41,15 @@
     a {
       font-family: sans-serif;
       font-size: 25px;
-      color:white;
-        fill:white;
+      color:red;
+        fill:black;
         
-        text-shadow:2px 2px gray;
-        font-weight: 600;
+        
+        text-shadow:2px 1px white;
+        font-weight: 400;
     }
-a:link { text-decoration: none; color:ivory;}
-a:visited { text-decoration: none; color:ivory;}
+a:link { text-decoration: none; color:red;}
+a:visited { text-decoration: none; color:black;}
 a:hover { text-decoration: none; color:ivory;}
 a:active { text-decoration: none;color:ivory; }
        
@@ -130,6 +131,7 @@ a:active { text-decoration: none;color:ivory; }
             createA.appendChild(createAText);
             th.appendChild(createA);
             th.setAttribute('bgcolor', catColorsData[0][item]);
+            th.setAttribute('align','center');
             
            // th.innerText = "<a href=?"+urlhelper+item+">"+item+"</a>"; // Set the column name as the text of the header cell
             tr.appendChild(th); // Append the header cell to the header row
@@ -154,7 +156,7 @@ var svg = d3.select("#barrace").append("svg")
 
 
 
-var tickDuration = 1500;
+var tickDuration = 1000;
 
 var top_n = 12;
 var height = 400;
@@ -167,7 +169,7 @@ const margin = {
    left: 0
 };
 
-let barPadding = (height-(margin.bottom+margin.top))/(top_n*5);
+let barPadding = (height-(margin.bottom+margin.top))/(top_n*10);
 
        
 let title = svg.append('text')
@@ -254,9 +256,8 @@ let cindexv = 1;
       .append('text')
       .attr('class', 'label')
       .attr('x', d => x(d.value)-8)
-      .attr('y', d => y(d.rank)+5+((y(1)-y(0))/2)+1)
+      .attr('y', d => y(d.rank)+11+((y(1)-y(0))/2))
       .style('text-anchor', 'end')
-      .style('text-shadow', '5px 5px white')
       .html(d => "<a href=?"+urlhelper+d.name+">"+d.name+"</a>") ; 
 
    svg.selectAll('text.valueLabel')
@@ -333,7 +334,7 @@ let cindexv = 1;
          .append('text')
          .attr('class', 'label')
          .attr('x', d => x(d.value)-8)
-         .attr('y', d => y(top_n+1)+5+((y(1)-y(0))/2))
+         .attr('y', d => y(top_n+1)+19+((y(1)-y(0))/2))
          .style('text-anchor', 'end')
          .html(d => "<a href=?"+urlhelper+d.name+">"+d.name+"</a>")   
          .transition()
@@ -347,7 +348,7 @@ let cindexv = 1;
          .duration(tickDuration)
          .ease(d3.easeLinear)
          .attr('x', d => x(d.value)-8)
-         .attr('y', d => y(d.rank)+5+((y(1)-y(0))/2)+1);
+         .attr('y', d => y(d.rank)+10+((y(1)-y(0))/2)+1);
 
       labels
          .exit()
