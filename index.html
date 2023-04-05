@@ -80,17 +80,18 @@ a:active { text-decoration: none;color:white; }
 
 <body >
     <centre>
-	<h3 style="font-family:sans-serif;color: white;">
-    NLP Word Race - Alonso-Pinar/Filippi - Challenge Dataviz 2023 - Università di Corsica</h3>
-    <h5 style="font-family:sans-serif;font-weight: 100;color: white;">
-     Proportion de vidéos de 2020 à 2023 comprenant ces mots et thèmes dans les descriptions. Analyse interactive basée sur les commentaires de 1.600.000 vidéos.<BR> Vous pouvez cliquer sur les graphe du bas pour choisir une date. Vous pouvez aussi cliquer sur chaque catégorie pour le détail
-    <br><a href="?dataset=categories">Revenir aux catégories</a> Dataset chaine <a href="visu_channel.html">ici!</a> 
-     <br>Quelques repères (actualités) : Covid (fev 2020), Presidentielles (Avril 2021), Ukraine(jan 2022)
-    </h5>
-    <div id="container"></div>
-
-    <div class="small-height" id="barrace"></div>
-    <div class="small-height" id="chartword"></div>
+	<a href="?dataset=categories";font-size: 15x; >  NLP Word Race - Alonso-Pinar/Filippi - Challenge Dataviz 2023 - Università di Corsica</a>
+          <div class="small-height" id="barrace"></div>
+         <div id="container"></div>   
+     <div class="small-height" id="chartword"></div>
+    <h5 style="font-family:sans-serif;font-weight: 100;color: ivory;">
+     Proportion de vidéos de 2020 à 2023 comprenant ces mots et thèmes dans les descriptions. Analyse interactive basée sur 1.600.000 vidéos. <BR>Vous pouvez cliquer sur les graphe du bas pour choisir une date. Vous pouvez aussi cliquer sur chaque catégorie pour le détail.
+        <br><a href="?dataset=categories";font-size: 15x; >Revenir aux catégories</a>  -------------  <a href="visu_channel.html">Dataset chaine </a> 
+        </h5>
+ 
+    
+       
+  
     </centre>
     <script src="catcolors.js"></script>
      <script>
@@ -110,7 +111,7 @@ a:active { text-decoration: none;color:white; }
          
          // Create the table element
          let table = document.createElement("table");
-         
+         table.setAttribute('width', "960px");
          // Get the keys (column names) of the first object in the JSON data
          let cols = Object.keys(catColorsData[0]);
          
@@ -163,19 +164,20 @@ var height = 400;
 var width = 960;
 
 const margin = {
-   top: 80,
+   top: 20,
    right: 0,
    bottom: 0,
    left: 0
 };
 
-let barPadding = (height-(margin.bottom+margin.top))/(top_n*10);
+let barPadding = 0//(height-(margin.bottom+margin.top))/(top_n*10);
 
        
 let title = svg.append('text')
    .attr('class', 'title')
-   .attr('y', 24)
-   .html("Vue du thème "+dsetfile);
+   .attr('y', height-80)
+   .attr('x', width-150)
+   .html(""+dsetfile);
 
 let subTitle = svg.append("text")
    .attr("class", "subTitle")
@@ -413,44 +415,94 @@ let cindexv = 1;
 });
 
   
-
+var Myheight = 200
 // append the svg object to the body of the page
 var svg2 = d3.select("#chartword")
   .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", Myheight +  margin.bottom)
     .append("g")
     .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")")
+          "translate(" + margin.left + "," +   ")")
     .on("click", function() {
       
         var coordinates= d3.mouse(this);
         var newD = coordinates[0]*100/width
         if(newD<80)
             year = ~~newD;
-       
+       console.log(coordinates[0])
       d3.event.stopPropagation();
     });
    rectanglebg = svg2.append("rect")
       .attr("x", 0)
       .attr("y", 0)
       .attr("width", width)
-      .attr("height", height)
+      .attr("height", Myheight)
        .attr('fill', 'black');
        
 	svg2.append("g")
 		.attr("width", width)
-		.attr("height", height);
+		.attr("height", Myheight);
     
     rectangleYear = svg2.append("rect")
       .attr("x", 5)
       .attr("y", 0)
       .attr("width", 15)
-      .attr("height", height)
-       .attr('fill', 'lightblue');
+      .attr("height", Myheight)
+      .attr('fill', 'lightblue');
         
+
+    rect1 = svg2.append("rect")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("width", 2)
+      .attr("height", Myheight)
+      .attr('fill', 'lightblue');
+       
+    text1 = svg2.append("text")
+	.text("jan 2020")
+	.attr("x", 5)
+	.attr("y", 20)
+    .attr('fill', 'lightblue');
+       
+   rect2 = svg2.append("rect")
+      .attr("x", 250-5)
+      .attr("y", 0)
+      .attr("width", 2)
+      .attr("height", Myheight)
+      .attr('fill', 'lightblue'); 
+       
+    text2 = svg2.append("text")
+	.text("jan 2021")
+	.attr("x", 250)
+	.attr("y", 20)
+    .attr('fill', 'lightblue');
+  
+    rect3 = svg2.append("rect")
+      .attr("x", 250*2-5)
+      .attr("y", 0)
+      .attr("width", 2)
+      .attr("height", Myheight)
+      .attr('fill', 'lightblue'); 
+    text3 = svg2.append("text")
+	.text("jan 2022")
+	.attr("x", 250*2)
+	.attr("y", 20)
+    .attr('fill', 'lightblue');
     
-      
+        rect3 = svg2.append("rect")
+      .attr("x", 250*3-5)
+      .attr("y", 0)
+      .attr("width", 2)
+      .attr("height", Myheight)
+      .attr('fill', 'lightblue'); 
+      text3 = svg2.append("text")
+	.text("jan 2023")
+	.attr("x", 250*3)
+	.attr("y", 20)
+    .attr('fill', 'lightblue');
+ 
+       
                       
     <!-- Row Converter Function -->
     function parseRow(d){      
@@ -479,12 +531,12 @@ var svg2 = d3.select("#chartword")
 				   
 	    let yScale = d3.scaleLinear()
                    .domain([0, vmax])
-                   .range([height, 0]);
+                   .range([Myheight, 0]);
 
     
 	    <!-- Setup Axis -->
         let xAxis = svg2.append("g")
-                  .attr("transform","translate(0,"+height+")")
+                  .attr("transform","translate(0,"+Myheight+")")
                   .call(d3.axisBottom(xScale).tickFormat(d3.format('.0f')));
 				  
         let yAxis = svg2.append("g")

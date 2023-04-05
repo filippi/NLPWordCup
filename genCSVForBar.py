@@ -54,6 +54,7 @@ categories["Covid-cuisine"] = ["covid-19","cuisine*600"]
 
 spurious=[]
 
+#34568B #6B5B95 #955251 #9B2335 #B55A30 #939597 #939597 #4B5335 #6B5876 #006B54 #D69C2F #615550
 
 def genCSVforWeb(fname, listOfKeys, dfs):
     allVids = pd.DataFrame(columns=listOfKeys,index=(range(len(dfs))))
@@ -65,8 +66,11 @@ def genCSVforWeb(fname, listOfKeys, dfs):
     
     allVids = allVids.rolling(2).mean()
     allVids.loc[0] = allVids.loc[1]
-    
-    
+    if "cuisine*600" in dcat.columns:
+        allVids["cuisine*600"] = (allVids["covid-19"].max()-allVids["covid-19"].min())*(allVids["cuisine*600"]-allVids["cuisine*600"].min())/(allVids["cuisine*600"].max()-allVids["cuisine*600"].min())
+    if "cryptos*10" in dcat.columns:
+        allVids["cryptos*10"]  = (allVids["ukraine"].max()-allVids["ukraine"].min())*(allVids["cryptos*10"]-allVids["cryptos*10"].min())/(allVids["cryptos*10"].max()-allVids["cryptos*10"].min())
+        
     
     with open("data/"+fname+".csv",  'w', newline='') as csvfile:
         mycsvwriter = csv.writer(csvfile, delimiter=',')
@@ -102,7 +106,7 @@ dkw.set_index('Date', inplace=True)
 
 
 dkw["cryptos*10"]=dkw["ukraine"].max()*((dkw["cryptos"]-dkw["cryptos"].min())/(dkw["cryptos"].max()-dkw["cryptos"].min()))
-dkw["cuisine*600"]=600*(dkw["cuisine"]-dkw["cuisine"].min())/(dkw["cuisine"].max()-dkw["cuisine"].min())
+dkw["cuisine*600"]=(dkw["cuisine"]-dkw["cuisine"].min())/(dkw["cuisine"].max()-dkw["cuisine"].min())
 
 #dkw["cuisine*20"]=dkw["covid-19"].min()+(dkw["cuisine*20"]-dkw["cuisine*20"].min())*(dkw["covid-19"].max()-dkw["covid-19"].min())
 
@@ -114,6 +118,7 @@ dcat = dcat.fillna(0)
 for cat in categories:
     for catKW in categories[cat]:
         dcat[cat] = dcat[cat] + (dkw[catKW]*(1))/dkw['NVIDEOS']
+        
 
 
 
@@ -133,7 +138,8 @@ for cat in categories:
 
     for catKW in listOfKeys:
         dcat[catKW] = dcat[catKW] + (dkw[catKW]*(1))/dkw['NVIDEOS']
-
+    if "cuisine*600" in dcat.columns:
+       dcat["cuisine*600"] = dcat["cuisine*600"]-dcat["cuisine*600"].min()
     dcat['Date'] = dcat.index
     g = dcat.groupby(pd.Grouper(key='Date', freq='2W'))
     dfs = [group for _,group in g]   
@@ -144,7 +150,7 @@ for cat in categories:
 
 
 
-colors = ["paleturquoise","palevioletred","papayawhip","pink","plum","red","rosybrown","royalblue","salmon","sandybrown","seagreen","silver","slateblue","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
+colors = ["#34568B","#F6D155","#955251","#9B2335","#B55A30","#939597","#939597","#4B5335","#6B5876","#006B54","#D69C2F","#615550","#92A8D4","#FB5B95","#CE3175","#5A7247","#DC4C46","#DBB1CD","palevioletred","papayawhip","pink","plum","red","rosybrown","royalblue","salmon","sandybrown","seagreen","silver","slateblue","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke"]
 
 allColors={}
 catColors={}
