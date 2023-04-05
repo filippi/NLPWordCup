@@ -22,7 +22,7 @@
     }
     text.subTitle{
        font-weight: 500;
-       fill: #777777;
+       fill: lightgrey;
     }
     text.caption{
        font-weight: 400;
@@ -164,7 +164,7 @@ var height = 400;
 var width = 960;
 
 const margin = {
-   top: 20,
+   top: 40,
    right: 0,
    bottom: 0,
    left: 0
@@ -181,8 +181,8 @@ let title = svg.append('text')
 
 let subTitle = svg.append("text")
    .attr("class", "subTitle")
-   .attr("y", 55)
-   .html("Proportion de vidéos (/100)");
+   .attr("y", 15)
+   .html("Pourcentage de vidéos comprenant ces mots et thèmes dans les descriptions");
 
 let caption = svg.append('text')
    .attr('class', 'caption')
